@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>countdown!</title>
+        <style>
+            div {
+                text-align: center;
+                font-weight: 900;
+                font-size: xx-large;
+                font-style: italic;
+            }
+            .content {
+                color: black;
+                font-weight: 900;
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+    CountDownTimer('01/01/2021 00:00 AM', 'countdown'); // 2017년 1월 1일까지
+
+function CountDownTimer(dt, id)
+{
+var end = new Date(dt);
+
+var _second = 1000;
+var _minute = _second * 60;
+var _hour = _minute * 60;
+var _day = _hour * 24;
+var timer;
+
+function showRemaining() {
+var now = new Date();
+var distance = end - now;
+if (distance < 0) {
+
+clearInterval(timer);
+document.getElementById(id).innerHTML = 'EXPIRED!';
+
+return;
+}
+var days = Math.floor(distance / _day);
+var hours = Math.floor((distance % _day) / _hour);
+var minutes = Math.floor((distance % _hour) / _minute);
+var seconds = Math.floor((distance % _minute) / _second);
+
+document.getElementById(id).innerHTML = days + '일 ';
+document.getElementById(id).innerHTML += hours + '시간 ';
+document.getElementById(id).innerHTML += minutes + '분 ';
+document.getElementById(id).innerHTML += seconds + '초';
+}
+
+timer = setInterval(showRemaining, 1000);
+}
+</script>
+</head>
+<body>
+    <dl>
+        <dt><a class="content" href="1.html">recommend you</a></dt>
+            <dd><a class="content" href="2.html">Bruno Mars - Versace on the Floor</a></dd>
+            <dd><a class="content" href="3.html">Jung Seung Hwan - snowman</a></dd>
+            <dt><a class="content" href="4.html">countdown!</a></dt>
+    </dl>
+    <div id="countdown"></div>
+    <img src="https://i.pinimg.com/564x/a0/15/c2/a015c2df08c525fc1318036f402b0d59.jpg"
+</body>
+</html>
